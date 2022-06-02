@@ -14,8 +14,7 @@ class EnterFragment : Fragment() {
     private lateinit var tasarim:FragmentEnterBinding
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_enter, container, false)
 
         tasarim.buttonEnter.setOnClickListener {

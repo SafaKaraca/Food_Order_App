@@ -1,13 +1,14 @@
 package com.safakaraca.foodorder.repo
 
-import android.telecom.Call
 import androidx.lifecycle.MutableLiveData
 import com.safakaraca.foodorder.databinding.FragmentFoodDetailBinding
 import com.safakaraca.foodorder.entity.*
 import com.safakaraca.foodorder.retrofit.ApiUtils
 import com.safakaraca.foodorder.retrofit.FoodsDaoInterface
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import javax.security.auth.callback.Callback
+
 
 class FoodsDaoRepository {
     var foodsList : MutableLiveData<List<Foods>>
@@ -25,12 +26,12 @@ class FoodsDaoRepository {
     }
 
     fun tumYemekleriAl() {
-        fdaoi.tumYemekler().enqueue(object : retrofit2.Callback<FoodsResponse> {
-            override fun onResponse(call: retrofit2.Call<FoodsResponse>, response: Response<FoodsResponse>) {
-                val liste = response.body().foods
+        fdaoi.tumYemekler().enqueue(object : Callback<FoodsResponse> {
+            override fun onResponse(call: Call<FoodsResponse>, response: Response<FoodsResponse>) {
+                val liste = response.body()?.foods
                 foodsList.value = liste
             }
-            override fun onFailure(call: retrofit2.Call<FoodsResponse>, t: Throwable) {}
+            override fun onFailure(call: Call<FoodsResponse>, t: Throwable) {}
         })
     }
 
@@ -40,12 +41,12 @@ class FoodsDaoRepository {
 
     fun tumSepetYemekleriAl(userName: String) {
         fdaoi.sepettekiYemekler("safakaraca")
-            .enqueue(object : retrofit2.Callback<BasketFoodsResponse> {
-                override fun onResponse(call: retrofit2.Call<BasketFoodsResponse>, response: Response<BasketFoodsResponse>) {
-                    val liste = response.body().basketFoods
+            .enqueue(object : Callback<BasketFoodsResponse> {
+                override fun onResponse(call: Call<BasketFoodsResponse>, response: Response<BasketFoodsResponse>) {
+                    val liste = response.body()?.basketFoods
                     basketFoodsList.value = liste
                 }
-                override fun onFailure(call: retrofit2.Call<BasketFoodsResponse>, t: Throwable) {
+                override fun onFailure(call: Call<BasketFoodsResponse>, t: Throwable) {
                 }
             })
     }
@@ -58,8 +59,8 @@ class FoodsDaoRepository {
                    userName: String) {
 
         fdaoi.sepeteYemekEkle(basketFoodId, foodName, foodImageName, foodPrice, foodAdet, userName)
-            .enqueue(object : retrofit2.Callback<CRUDResponse> {
-                override fun onResponse(call: retrofit2.Call<CRUDResponse>, response: Response<CRUDResponse>) {
+            .enqueue(object : Callback<CRUDResponse> {
+                override fun onResponse(call: Call<CRUDResponse>, response: Response<CRUDResponse>) {
                     try {
                         if(basketFoodsList.value != null && basketFoodsList.value!!.isNotEmpty()) {
                             tumSepetYemekleriAl(userName)
@@ -69,15 +70,14 @@ class FoodsDaoRepository {
                     }catch (e: Exception){
                     }
                 }
-                override fun onFailure(call: retrofit2.Call<CRUDResponse>, t: Throwable) {
+                override fun onFailure(call: Call<CRUDResponse>, t: Throwable) {
                 }
             })
     }
     fun sepettenYemekSilme(basketFoodId: Int,
                            userName: String) {
-        fdaoi.sepettenYemekSil(basketFoodId, userName).enqueue(object :
-            retrofit2.Callback<CRUDResponse> {
-            override fun onResponse(call: retrofit2.Call<CRUDResponse>, response: Response<CRUDResponse>) {
+        fdaoi.sepettenYemekSil(basketFoodId, userName).enqueue(object : Callback<CRUDResponse> {
+            override fun onResponse(call: Call<CRUDResponse>, response: Response<CRUDResponse>) {
 
                 try {
                     if(basketFoodsList.value!!.size == 1) {
@@ -89,7 +89,7 @@ class FoodsDaoRepository {
                 }
 
             }
-            override fun onFailure(call: retrofit2.Call<CRUDResponse>, t: Throwable) {
+            override fun onFailure(call: Call<CRUDResponse>, t: Throwable) {
 
             }
         })
@@ -110,9 +110,7 @@ class FoodsDaoRepository {
     }
 
     fun btnAddMinus(tasarim: FragmentFoodDetailBinding) {
-        tasarim.buttonMinus .setOnClickListener { artir(tasarim) }
-        tasarim.buttonPlus.setOnClickListener { azalt(tasarim) }
+        tasarim.buttonPlus .setOnClickListener { artir(tasarim) }
+        tasarim.buttonMinus.setOnClickListener { azalt(tasarim) }
     }
-
-
 }

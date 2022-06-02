@@ -22,17 +22,10 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeFragmentVM
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: HomeFragmentVM by viewModels()
-        this.viewModel = tempViewModel
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        tasarim.homeFragment = this
         tasarim.homeToolbarBaslik = "FOODS"
 
         viewModel.foodsList.observe(viewLifecycleOwner){
@@ -49,6 +42,12 @@ class HomeFragment : Fragment() {
         return tasarim.root
     }
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: HomeFragmentVM by viewModels()
+        this.viewModel = tempViewModel
+    }
 
 
 }

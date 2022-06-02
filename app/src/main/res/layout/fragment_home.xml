@@ -5,8 +5,7 @@
 
     <data>
         <variable name="homeToolbarBaslik" type="String" />
-        <variable name="homeFragment" type="com.safakaraca.foodorder.fragment.HomeFragment" />
-        <variable name="foodsAdapter" type="com.safakaraca.foodorder.adapter.FoodsAdapter" />
+        <variable name="FoodsAdapter" type="com.safakaraca.foodorder.adapter.FoodsAdapter" />
 
     </data>
 
@@ -29,7 +28,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
-            android:adapter="@{foodsAdapter}"
+            android:adapter="@{FoodsAdapter}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

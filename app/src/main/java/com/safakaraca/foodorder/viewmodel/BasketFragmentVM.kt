@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.safakaraca.foodorder.entity.BasketFoods
 import com.safakaraca.foodorder.repo.FoodsDaoRepository
 
-class BasketFragmentVM : ViewModel(){
+class BasketFragmentVM : ViewModel() {
 
     var basketFoodsList: MutableLiveData<List<BasketFoods>>
     private var fdao = FoodsDaoRepository()
@@ -20,7 +20,7 @@ class BasketFragmentVM : ViewModel(){
         fdao.tumSepetYemekleriAl("safakaraca")
     }
 
-    fun yemekSil(baskerFoodId: Int, userName: String) {
-        fdao.sepettenYemekSilme(baskerFoodId, userName)
+    fun yemekSil(basketFoodId: Int, userName: String) {
+        fdao.sepettenYemekSilme(basketFoodId, userName)
     }
 }

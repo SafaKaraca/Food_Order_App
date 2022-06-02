@@ -22,12 +22,6 @@ class FoodDetailFragment : Fragment() {
     val userName = "safakaraca"
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: FoodDetailFragmentVM by viewModels()
-        viewModel = tempViewModel
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_food_detail, container, false)
 
@@ -47,6 +41,12 @@ class FoodDetailFragment : Fragment() {
         viewModel.buttonEkleCikar(tasarim)
 
         return tasarim.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: FoodDetailFragmentVM by viewModels()
+        viewModel = tempViewModel
     }
 
     fun buttonAddToBasket(foodNesne: Foods, adet: String, it: View) {

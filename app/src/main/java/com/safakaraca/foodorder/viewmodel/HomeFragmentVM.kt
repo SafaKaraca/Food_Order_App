@@ -17,6 +17,5 @@ class HomeFragmentVM : ViewModel() {
 
     fun yemekleriYukle(){
         fdao.tumYemekleriAl()
-
     }
 }

@@ -5,7 +5,7 @@
 
     <data>
         <variable name="orderedToolbarBaslik" type="String" />
-        <variable name="orderedFragment" type="com.safakaraca.foodorder.fragment.OrderedFragment" />
+        <variable name="OrderedFragment" type="com.safakaraca.foodorder.fragment.OrderedFragment" />
 
     </data>
 

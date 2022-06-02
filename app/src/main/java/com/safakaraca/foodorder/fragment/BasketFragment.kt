@@ -19,11 +19,7 @@ class BasketFragment : Fragment() {
     private lateinit var viewModel: BasketFragmentVM
     private lateinit var adapter: BasketFoodsAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val tempViewModel: BasketFragmentVM by viewModels()
-        viewModel = tempViewModel
-    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_basket, container, false)
@@ -55,5 +51,11 @@ class BasketFragment : Fragment() {
         }
 
         return tasarim.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: BasketFragmentVM by viewModels()
+        viewModel = tempViewModel
     }
 }

@@ -14,7 +14,8 @@ interface FoodsDaoInterface {
     @GET("yemekler/tumYemekleriGetir.php")
     fun tumYemekler(): Call<FoodsResponse>
 
-
+    @POST("yemekler/sepeteYemekEkle.php")
+    @FormUrlEncoded
     fun sepeteYemekEkle(@Field("sepet_yemek_id") foodId:Int,
                         @Field("yemek_adi") foodName: String,
                         @Field("yemek_resim_adi") foodImageName:String,

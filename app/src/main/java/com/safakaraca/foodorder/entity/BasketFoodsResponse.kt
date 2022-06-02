@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class BasketFoodsResponse(@SerializedName("sepet_yemekler")
                                @Expose var basketFoods: List<BasketFoods>,
                                @SerializedName ("success")
-                               @Expose var success:Int) {
+                               @Expose var success: Int) {
 }

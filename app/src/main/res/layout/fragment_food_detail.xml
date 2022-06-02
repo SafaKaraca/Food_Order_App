@@ -7,6 +7,7 @@
         <variable name="foodDetailToolbarBaslik" type="String" />
         <variable name="foodNesne" type="com.safakaraca.foodorder.entity.Foods" />
         <variable name="foodDetailFragment" type="com.safakaraca.foodorder.fragment.FoodDetailFragment" />
+        <variable name="foodsAdapter" type="com.safakaraca.foodorder.adapter.FoodsAdapter" />
 
     </data>
 
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{foodNesne.foodName}"
+            android:text="Yemek Adı"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{foodNesne.foodPrice}"
+            android:text="40 Tl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:onClick="@{() -> foodDetailFragment.buttonAddToBasket(foodNesne,textViewFoodAdet.getText().toString(),textViewFoodAdet)}"
             android:text="SEPETE EKLE"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

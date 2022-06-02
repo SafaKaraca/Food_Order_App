@@ -11,6 +11,6 @@ data class Foods(@SerializedName("yemek_id")
                  @SerializedName("yemek_resim_adi")
                  @Expose var foodImageName: String,
                  @SerializedName("yemek_fiyat")
-                 @Expose var foodPrice: Int) : Serializable{
+                 @Expose var foodPrice: Int) : Serializable {
 
 }
